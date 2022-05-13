@@ -1,0 +1,51 @@
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "description": "Node.JS Application with MySQL, Sequelize, Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulthackkar/nodejs-mysql-jwt-sequelize.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "Rest",
+    "API",
+    "JWT",
+    "Authetication",
+    "JWT",
+    "Sequelize",
+    "Sequelize",
+    "with",
+    "MySQL",
+    "Express",
+    "Express.js",
+    "Node+MySQL"
+  ],
+  "author": "Rahul Thakkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahulthackkar/nodejs-mysql-jwt-sequelize/issues"
+  },
+  "homepage": "https://github.com/rahulthackkar/nodejs-mysql-jwt-sequelize#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "sequelize": "^6.19.0"
+  }
+}

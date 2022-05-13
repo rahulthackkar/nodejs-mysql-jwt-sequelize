@@ -1,0 +1,55 @@
+version: '3'
+networks:
+  node-app:
+services:
+  node-webserver:
+    networks:
+      node-app:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: Node-Webserver
+    restart: 'always'
+    working_dir: /usr/src/app
+    depends_on:
+      - mysqldb
+    ports:
+      - ${HOST_MACHINE_UNSECURE_HOST_PORT-3000}:${NODE_APP_PORT-3000}
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+  mysqldb:
+    networks:
+      node-app:
+    image: mariadb:10.6
+    container_name: Node-MySQL
+    env_file: ./.env
+    restart: 'unless-stopped'
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./docker/config/mysql:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD-deep70}
+      MYSQL_DATABASE: ${MYSQL_DATABASE-radixweb}
+      MYSQL_USER: ${MYSQL_USER-radixdev}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD-deep70}
+  phpmyadmin:
+    networks:
+      node-app:
+    image: phpmyadmin/phpmyadmin
+    container_name: Node-PMA
+    restart: 'unless-stopped'
+    depends_on:
+      - mysqldb
+    environment:
+      PMA_HOST: mysqldb
+      MYSQL_USER: ${MYSQL_USER-radixdev}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD-deep70}
+      UPLOAD_LIMIT: 3000M
+    ports:
+      - ${HOST_MACHINE_PMA_PORT-8082}:80
+
+volumes:
+  db-config:
+  db-data:
