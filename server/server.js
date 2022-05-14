@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 // app.use(express.urlencoded({ extended: true }));
 const db = require("./models");
 const Role = db.role;
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and Resync Db");
-    // initial();
+  initial();
 });
 function initial() {
   Role.create({
@@ -45,7 +45,7 @@ require("./routes/")(app);
 // set port, listen for requests
 console.log(`Server is running on port ` + process.env.NODE_APP_PORT);
 // Handling Errors
-app.use((err, req, res, next) => { 
+app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.message = err.message || "Internal Server Error";
   res.status(err.statusCode).json({

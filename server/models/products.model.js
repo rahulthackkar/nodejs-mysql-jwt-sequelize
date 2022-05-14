@@ -13,11 +13,20 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(255),
         allowNull: false,
         field: "name",
+        validate: {
+          notEmpty: true,
+          min: {
+            args: [3],
+          },
+        },
       },
       price: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         field: "price",
+        validate: {
+          isDecimal: true
+        },
       },
       createdAt: {
         type: DataTypes.DATE,
