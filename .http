@@ -1,0 +1,68 @@
+### Request 1 - Get Public Content
+GET http://www.localhost:3000/api/test/all
+
+### Request 3 - Sign up
+POST http://www.localhost:3000/api/auth/signup 
+Content-Type: application/json
+
+{"username":"rahul","email":"rahul.thacker@radixweb.com","password":"password"}
+
+### Request 4 - Login
+POST http://www.localhost:3000/api/auth/signin 
+# Host: http://www.localhost:3000
+Content-Type: application/json
+
+
+{"username":"rahul","password":"password"} 
+
+### Request 5 Get User Content
+
+GET http://www.localhost:3000/api/test/user 
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUyNTIzMzQ4LCJleHAiOjE2NTI2MDk3NDh9.JeKUwg6Pw8VtqIJ_D-ny69NfJ3tzBKafZR5--EK5jX0
+
+### Request 6 - Sign up Admin
+POST http://www.localhost:3000/api/auth/signup 
+Content-Type: application/json
+
+{"username":"admin","email":"admin@radixweb.com","password":"password"}
+
+
+### Request 7 - Login as admin
+POST http://www.localhost:3000/api/auth/signin 
+# Host: http://www.localhost:3000
+Content-Type: application/json
+
+{"username":"admin","password":"password"} 
+
+
+### Request 8 - Get All Products
+GET http://www.localhost:3000/product
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUyNTI1MzEzLCJleHAiOjE2NTI2MTE3MTN9.7tbuN-S1eb94NROyBT5E0StrUbOi-_OahkNmAKK-DcM
+
+
+### Request 9 - Add Product
+POST http://www.localhost:3000/product
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUyNTI1MzEzLCJleHAiOjE2NTI2MTE3MTN9.7tbuN-S1eb94NROyBT5E0StrUbOi-_OahkNmAKK-DcM
+
+{"name":"Business Cards", "price":100}
+
+
+### Request 10 - Get Specific Products By id
+GET http://www.localhost:3000/product/2
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUyNTI1MzEzLCJleHAiOjE2NTI2MTE3MTN9.7tbuN-S1eb94NROyBT5E0StrUbOi-_OahkNmAKK-DcM
+
+
+### Request 11 - Delete Product
+DELETE http://www.localhost:3000/product/1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUyNTI1MzEzLCJleHAiOjE2NTI2MTE3MTN9.7tbuN-S1eb94NROyBT5E0StrUbOi-_OahkNmAKK-DcM
+
+
+
+### Request 11 - Update Product
+PUT http://www.localhost:3000/product/2
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjUyNTI1MzEzLCJleHAiOjE2NTI2MTE3MTN9.7tbuN-S1eb94NROyBT5E0StrUbOi-_OahkNmAKK-DcM
+
+{"name":"Business Cards", "price":100}

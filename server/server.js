@@ -17,7 +17,7 @@ const db = require("./models");
 const Role = db.role;
 db.sequelize.sync().then(() => {
   console.log("Drop and Resync Db");
-  //   initial();
+    // initial();
 });
 function initial() {
   Role.create({
@@ -39,20 +39,20 @@ function initial() {
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Nodejs Application." });
 });
-require("./routes/index")(app);
+require("./routes/")(app);
 
 // routes
 // set port, listen for requests
 console.log(`Server is running on port ` + process.env.NODE_APP_PORT);
 // Handling Errors
-app.use((err, req, res, next) => {
-  console.log(err);
+app.use((err, req, res, next) => { 
   err.statusCode = err.statusCode || 500;
   err.message = err.message || "Internal Server Error";
   res.status(err.statusCode).json({
     message: err.message,
   });
 });
+
 const PORT = process.env.NODE_APP_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
