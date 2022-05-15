@@ -25,7 +25,7 @@ exports.getAllProducts = (req, res) => {
   // Get All products
   Product.findAll()
     .then((products) => {
-      res.json({ data: products });
+      res.json(products);
     })
     .catch(err => {
       res.status(500).send({

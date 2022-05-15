@@ -33,6 +33,11 @@ isAdmin = (req, res, next) => {
       });
       return;
     });
+  }).catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Error while retrieving user data"
+    });
   });
 };
 isModerator = (req, res, next) => {
@@ -47,6 +52,11 @@ isModerator = (req, res, next) => {
       res.status(403).send({
         message: "Require Moderator Role!"
       });
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Error while retrieving user data"
     });
   });
 };
@@ -66,6 +76,11 @@ isModeratorOrAdmin = (req, res, next) => {
       res.status(403).send({
         message: "Require Moderator or Admin Role!"
       });
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Error while retrieving user data"
     });
   });
 };

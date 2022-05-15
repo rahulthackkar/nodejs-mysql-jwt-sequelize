@@ -1,7 +1,10 @@
 const { verifySignUp } = require("../middleware");
 const authController = require("../controllers/auth.controller");
-module.exports = function(app) {
-  app.use(function(req, res, next) {
+const passport = require('passport')
+
+module.exports = function (app) {
+  app.get("/login", (req, res) => { res.render('login') });
+  app.use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
       "x-access-token, Origin, Content-Type, Accept"
@@ -17,4 +20,5 @@ module.exports = function(app) {
     authController.signup
   );
   app.post("/api/auth/signin", authController.signin);
+  app.get("/api/auth/google", passport.authenticate('google', { scope: ['profile', 'email'] }));
 };
