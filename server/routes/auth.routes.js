@@ -1,9 +1,7 @@
 const { verifySignUp } = require("../middleware");
 const authController = require("../controllers/auth.controller");
-const passport = require('passport')
-
+const passport = require("passport");
 module.exports = function (app) {
-  app.get("/login", (req, res) => { res.render('login') });
   app.use(function (req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
@@ -11,14 +9,42 @@ module.exports = function (app) {
     );
     next();
   });
+  // API Authentication using JWT
   app.post(
     "/api/auth/signup",
     [
       verifySignUp.checkDuplicateUsernameOrEmail,
-      verifySignUp.checkRolesExisted
+      verifySignUp.checkRolesExisted,
     ],
     authController.signup
   );
   app.post("/api/auth/signin", authController.signin);
-  app.get("/api/auth/google", passport.authenticate('google', { scope: ['profile', 'email'] }));
+  // API Authentication using JWT
+  // Google Authentication
+  app.get("/login", (req, res) => {
+    if (req.user != null) {
+      res.redirect("/");
+    }
+    res.render("login.ejs", {
+      user: req.user,
+    });
+  });
+  app.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+  );
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+    })
+  );
+  // Google Authentication
+
+  // Logout Handler
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
 };

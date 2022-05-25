@@ -15,6 +15,7 @@ services:
       - mysqldb
     ports:
       - ${HOST_MACHINE_UNSECURE_HOST_PORT-3000}:${NODE_APP_PORT-3000}
+      - 9229:9229
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules

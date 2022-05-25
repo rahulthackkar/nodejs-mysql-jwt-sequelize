@@ -1,22 +1,34 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser')
-const csrf = require('csurf');
+const cookieParser = require("cookie-parser");
+const csrf = require("csurf");
 const fspath = require("path");
 const app = express();
 const dotenv = require("dotenv");
 var csrfProtection = csrf({ cookie: true });
-const passport = require('passport')
-
+const passport = require("passport");
 dotenv.config({ path: fspath.resolve(__dirname, "../.env") });
+require("./utils/passport");
+var session = require("express-session");
+// For Passport
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
+); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 var corsOptions = {
   origin: "http://localhost:8081",
 };
 app.use(cors(corsOptions));
 
 // ejs as view engine
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -24,37 +36,15 @@ app.use(express.urlencoded({ extended: true }));
 // parse cookies
 // we need this because "cookie" is true in csrfProtection
 app.use(cookieParser());
-const db = require("./models"); 
-const Role = db.role;
-db.sequelize.sync().then(() => {
-  console.log("Drop and Resync Db");
-  // initial();
-});
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user",
-  });
-
-  Role.create({
-    id: 2,
-    name: "moderator",
-  });
-
-  Role.create({
-    id: 3,
-    name: "admin",
-  });
-}
 
 //Register All Routes
 // simple route
 app.get("/", (req, res) => {
-  // res.json({ message: "Welcome to Nodejs Application." });
-  res.render('index');
+    console.log(req.user);
+  res.render("index.ejs", {
+    user: req.user,
+  });
 });
-app.get("/api/auth/google",  passport.authenticate('google', { scope: ['profile','email'] }));
-
 require("./routes/")(app);
 
 // set port, listen for requests
