@@ -8,7 +8,7 @@ const app = express();
 const dotenv = require("dotenv");
 var csrfProtection = csrf({ cookie: true });
 const passport = require("passport");
-dotenv.config({ path: fspath.resolve(__dirname, "../.env") });
+dotenv.config({ path: fspath.resolve(__dirname, "./.env") });
 require("./utils/passport");
 var session = require("express-session");
 // For Passport

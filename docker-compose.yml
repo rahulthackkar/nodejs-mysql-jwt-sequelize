@@ -7,7 +7,7 @@ services:
       node-app:
     build:
       context: .
-      dockerfile: server/Dockerfile
+      dockerfile: Dockerfile
     container_name: Node-Webserver
     restart: 'always'
     working_dir: /usr/src/app
@@ -17,7 +17,7 @@ services:
       - ${HOST_MACHINE_UNSECURE_HOST_PORT-3000}:${NODE_APP_PORT-3000}
       - 9229:9229
     volumes:
-      - ./server:/usr/src/app
+      - ./:/usr/src/app
       - /usr/src/app/node_modules
   mysqldb:
     networks:
