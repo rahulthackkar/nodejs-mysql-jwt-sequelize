@@ -40,7 +40,6 @@ app.use(cookieParser());
 //Register All Routes
 // simple route
 app.get("/", (req, res) => {
-    console.log(req.user);
   res.render("index.ejs", {
     user: req.user,
   });
