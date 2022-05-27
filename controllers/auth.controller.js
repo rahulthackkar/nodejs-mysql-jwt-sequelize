@@ -5,6 +5,7 @@ const Role = db.role;
 const Op = db.Sequelize.Op;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+var mailer = require("../utils/nodemailer");
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({
@@ -13,6 +14,7 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   })
     .then((user) => {
+      mailer.sendWelcomeEmail({ name: user.username, email: user.email });
       if (req.body.roles) {
         Role.findAll({
           where: {
@@ -77,4 +79,3 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
-

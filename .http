@@ -1,12 +1,12 @@
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUyNTg5ODg4LCJleHAiOjE2NTI2NzYyODh9.rXJCPW2f7esdTTbS5w3OQ_JvGcXaODFVyugv1Z5b0HQ
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUzNjQ2MTg4LCJleHAiOjE2NTM3MzI1ODh9.I-cTcvoF2RPSD5mo2yxKUSEzwF_YBYg4FBro6YaoaqQ
 ### Request 1 - Get Public Content
 GET http://www.localhost:3000/api/test/all
 
-### Request 3 - Sign up User
+### Request 3 - Sign up User 
 POST http://www.localhost:3000/api/auth/signup 
 Content-Type: application/json
 
-{"username":"rahul","email":"rahul.thacker@radixweb.com","password":"password"}
+{"username":"rahul","email":"rahul.thacker@radixweb.com","password":"password","roles":["user"]}
 
 ### Request 4 - Login
 POST http://www.localhost:3000/api/auth/signin 
