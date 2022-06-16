@@ -10,15 +10,15 @@ services:
       dockerfile: Dockerfile
     container_name: Node-Webserver
     restart: 'always'
-    working_dir: /usr/src/app
+    working_dir: /home/node/app
     depends_on:
       - mysqldb
     ports:
       - ${HOST_MACHINE_UNSECURE_HOST_PORT-3000}:${NODE_APP_PORT-3000}
       - 9229:9229
     volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./:/home/node/app
+      - /home/node/app/node_modules
   mysqldb:
     networks:
       node-app:

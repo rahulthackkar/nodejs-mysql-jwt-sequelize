@@ -4,8 +4,8 @@
   "description": "Node.JS Application with MySQL, Sequelize, Express",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.js"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --forceExit",
+    "start": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,11 @@
   },
   "homepage": "https://github.com/rahulthackkar/nodejs-mysql-jwt-sequelize#readme",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "cross-env": "^7.0.3",
+    "eslint": "^8.17.0",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
   },
   "dependencies": {
     "@google-cloud/storage": "^6.0.1",
@@ -57,6 +61,8 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0",
     "passport-jwt": "^4.0.0",
-    "sequelize": "^6.19.0"
+    "readline": "^1.3.0",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1"
   }
 }

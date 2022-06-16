@@ -17,7 +17,6 @@ module.exports.sendWelcomeEmail = (user) => {
       user: user,
     })
     .then((template) => {
-        console.log(template)
       transport
         .sendMail({
           from: config.smtp.SMTP_USER,

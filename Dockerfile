@@ -1,11 +1,12 @@
 FROM node:16.14.2 
 
-WORKDIR /usr/src/app
+RUN mkdir /home/node/app
+
+WORKDIR /home/node/app
 
 COPY ./.env .env
 
 COPY ./package*.json ./
 
-RUN npm install
-
+RUN npm install --cache "/home/node/.npm"
 CMD ["npm", "run", "start"]
