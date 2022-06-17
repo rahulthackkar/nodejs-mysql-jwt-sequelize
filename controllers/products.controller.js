@@ -9,13 +9,13 @@ exports.addProduct = (req, res) => {
     price: req.body.price,
   };
   Product.create(product)
-    .then(data => {
-      res.json(data);
+    .then((data) => {
+      res.status(201).send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Product."
+          err.message || "Some error occurred while creating the Product.",
       });
     });
 };
@@ -27,10 +27,10 @@ exports.getAllProducts = (req, res) => {
     .then((products) => {
       res.json(products);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Product."
+          err.message || "Some error occurred while creating the Product.",
       });
     });
 };
@@ -39,18 +39,18 @@ exports.getAllProducts = (req, res) => {
 exports.getProduct = (req, res) => {
   const id = req.params.id;
   Product.findByPk(id)
-    .then(data => {
+    .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Product with id=${id}.`
+          message: `Cannot find Product with id=${id}.`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Product with id=" + id
+        message: "Error retrieving Product with id=" + id,
       });
     });
 };
@@ -59,22 +59,22 @@ exports.getProduct = (req, res) => {
 exports.deleteProduct = (req, res) => {
   const id = req.params.id;
   Product.destroy({
-    where: { id: id }
+    where: { id: id },
   })
-    .then(count => {
+    .then((count) => {
       if (count == 1) {
-        res.send({
-          message: "Product was deleted successfully!"
+        res.status(204).send({
+          message: "Product was deleted successfully!",
         });
       } else {
         res.status(404).send({
-          message: `Cannot find Product with id=${id}.`
+          message: `Cannot find Product with id=${id}.`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Product with id=" + id
+        message: "Error deleting Product with id=" + id,
       });
     });
 };
@@ -82,22 +82,22 @@ exports.deleteProduct = (req, res) => {
 exports.updateProduct = (req, res) => {
   const id = req.params.id;
   Product.update(req.body, {
-    where: { id: id }
+    where: { id: id },
   })
-    .then(count => {
+    .then((count) => {
       if (count == 1) {
         res.send({
-          message: "Product was updated successfully."
+          message: "Product was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`
+          message: `Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`,
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error updating Product with id=" + id
+        message: "Error updating Product with id=" + id,
       });
     });
 };
