@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://gitlab.com/proprint-us/proprint-manufacturer">
+  <a href="https://github.com/rahulthackkar/nodejs-mysql-jwt-sequelize">
     <img src="/assets/images/node.png" alt="Logo">
   </a>
 
