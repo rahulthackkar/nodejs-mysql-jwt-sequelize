@@ -1,48 +1,50 @@
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjUzNjQ2MTg4LCJleHAiOjE2NTM3MzI1ODh9.I-cTcvoF2RPSD5mo2yxKUSEzwF_YBYg4FBro6YaoaqQ
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU1NjM5ODg0LCJleHAiOjE2NTU3MjYyODR9.Rjm2Qq4zPLB_sg7yerfZJgveYPREerb1OWPu43DCrqg
+@domain = http://www.localhost:3000
+@domain = https://nodejs-upskill.herokuapp.com
 ### Request 1 - Get Public Content
-GET http://www.localhost:3000/api/test/all
+GET {{domain}}/api/test/all
 
 ### Request 3 - Sign up User 
-POST http://www.localhost:3000/api/auth/signup 
+POST {{domain}}/api/auth/signup 
 Content-Type: application/json
 
 {"username":"rahul","email":"rahul.thacker@radixweb.com","password":"password","roles":["user"]}
 
 ### Request 4 - Login
-POST http://www.localhost:3000/api/auth/signin 
-# Host: http://www.localhost:3000
+POST {{domain}}/api/auth/signin 
+# Host: {{domain}}
 Content-Type: application/json
 
 {"username":"rahul","password":"password"} 
 
 ### Request 5 Get User Content
 
-GET http://www.localhost:3000/api/test/user 
+GET {{domain}}/api/test/user 
 Content-Type: application/json
 x-access-token: {{access_token}}
 
 ### Request 6 - Sign up Admin
-POST http://www.localhost:3000/api/auth/signup 
+POST {{domain}}/api/auth/signup 
 Content-Type: application/json
 
 {"username":"admin","email":"admin@radixweb.com","password":"password","roles":["admin"]}
 
 
 ### Request 7 - Login as admin
-POST http://www.localhost:3000/api/auth/signin 
-# Host: http://www.localhost:3000
+POST {{domain}}/api/auth/signin 
+# Host: {{domain}}
 Content-Type: application/json
 
 {"username":"admin","password":"password"} 
 
 
 ### Request 8 - Get All Products
-GET http://www.localhost:3000/product
+GET {{domain}}/product
 x-access-token: {{access_token}}
 
 
 ### Request 9 - Add Product
-POST http://www.localhost:3000/product
+POST {{domain}}/product
 Content-Type: application/json
 x-access-token: {{access_token}}
 
@@ -50,17 +52,17 @@ x-access-token: {{access_token}}
 
 
 ### Request 10 - Get Specific Products By id
-GET http://www.localhost:3000/product/2
+GET {{domain}}/product/2
 x-access-token: {{access_token}}
 
 
 ### Request 11 - Delete Product
-DELETE http://www.localhost:3000/product/1
+DELETE {{domain}}/product/1
 x-access-token: {{access_token}}
 
 
 ### Request 11 - Update Product
-PUT http://www.localhost:3000/product/2
+PUT {{domain}}/product/2
 Content-Type: application/json
 x-access-token: {{access_token}}
 
