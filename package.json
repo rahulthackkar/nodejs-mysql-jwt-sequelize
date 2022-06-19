@@ -4,8 +4,9 @@
   "description": "Node.JS Application with MySQL, Sequelize, Express",
   "main": "server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --forceExit",
-    "start": "nodemon ./server.js"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=100000 --forceExit",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

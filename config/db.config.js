@@ -12,41 +12,38 @@
 //   },
 // };
 
-const fs = require('fs');
-require('dotenv').config();
+const fs = require("fs");
+require("dotenv").config();
 module.exports = {
   development: {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.MYSQL_HOST,
-    dialect: 'mysql',
+    dialect: "mysql",
     dialectOptions: {
-      bigNumberStrings: true
-    }
+      bigNumberStrings: true,
+    },
+    seederStorage: "json",
   },
   test: {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.MYSQL_HOST,
-    dialect: 'mysql',
-    dialectOptions: {
-      bigNumberStrings: true
-    }
-  },
-  production: {
-    username: process.env.PROD_DB_USERNAME,
-    password: process.env.PROD_DB_PASSWORD,
-    database: process.env.PROD_DB_NAME,
-    host: process.env.PROD_DB_HOSTNAME,
-    port: process.env.PROD_DB_PORT,
-    dialect: 'mysql',
+    dialect: "mysql",
     dialectOptions: {
       bigNumberStrings: true,
-    //   ssl: {
-    //     ca: fs.readFileSync(__dirname + '/mysql-ca-main.crt')
-    //   }
-    }
-  }
+    },
+  },
+  production: {
+    use_env_variable: "DATABASE_URL",
+    dialect: "mysql",
+    dialectOptions: {
+      bigNumberStrings: true,
+      //   ssl: {
+      //     ca: fs.readFileSync(__dirname + '/mysql-ca-main.crt')
+      //   }
+    },
+  },
 };

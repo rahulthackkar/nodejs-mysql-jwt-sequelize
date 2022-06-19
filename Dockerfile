@@ -9,4 +9,5 @@ COPY ./.env .env
 COPY ./package*.json ./
 
 RUN npm install --cache "/home/node/.npm"
-CMD ["npm", "run", "start"]
+
+CMD ["npm", "run", "dev"]
