@@ -63,7 +63,7 @@ exports.deleteProduct = (req, res) => {
   })
     .then((count) => {
       if (count == 1) {
-        res.status(204).send({
+        res.send({
           message: "Product was deleted successfully!",
         });
       } else {

@@ -12,8 +12,10 @@ exports.fileUpload = (req, res, next) => {
     });
     return;
   }
+  var fileName = req.file.originalname;
+  fileName = fileName.replace(/\s+/g, '-').toLowerCase();
   // New file name with nodejs as prefix in path to place these files separately on your bucket
-  const gcsFileName = `nodejs/${Date.now()}-${req.file.originalname}`;
+  const gcsFileName = `nodejs/${Date.now()}-${fileName}`;
   // Create a new blob in the bucket and upload the file data.
   const blob = bucket.file(gcsFileName);
   const blobStream = blob.createWriteStream({

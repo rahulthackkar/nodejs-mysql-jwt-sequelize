@@ -16,7 +16,7 @@ const TOKEN_PATH = __dirname + "/../google-drive-token.json";
  */
 exports.authorize = (req, res, next) => {
   fs.readFile(
-    __dirname + "/../google-credentials.json",
+    __dirname + "/../google-drive-credentials.json",
     "utf-8",
     (err, content) => {
       if (err) return console.log("Error loading client secret file:", err);
@@ -51,7 +51,7 @@ exports.authorizeCallback = (req, res, next) => {
   //   return;
   if (code !== null) {
     fs.readFile(
-      __dirname + "/../google-credentials.json",
+      __dirname + "/../google-drive-credentials.json",
       "utf-8",
       (err, content) => {
         if (err) return console.log("Error loading client secret file:", err);
@@ -87,7 +87,7 @@ exports.authorizeCallback = (req, res, next) => {
  */
 exports.listFiles = (req, res, next) => {
   fs.readFile(
-    __dirname + "/../google-credentials.json",
+    __dirname + "/../google-drive-credentials.json",
     "utf-8",
      (err, content) => {
       if (err) return console.log("Error loading client secret file:", err);

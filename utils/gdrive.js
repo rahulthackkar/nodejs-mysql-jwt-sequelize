@@ -10,7 +10,7 @@ const SCOPES = ["https://www.googleapis.com/auth/drive"];
 const TOKEN_PATH = "google-drive-token.json";
 
 // Load client secrets from a local file.
-fs.readFile(__dirname + "/../google-credentials.json", (err, content) => {
+fs.readFile(__dirname + "/../google-drive-credentials.json", (err, content) => {
   if (err) return console.log("Error loading client secret file:", err);
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(JSON.parse(content), listFiles);
