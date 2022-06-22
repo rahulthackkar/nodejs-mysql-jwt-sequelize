@@ -50,7 +50,7 @@ exports.getProduct = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Product with id=" + id,
+        message: err.message || "Error retrieving Product with id=" + id,
       });
     });
 };
@@ -74,7 +74,7 @@ exports.deleteProduct = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error deleting Product with id=" + id,
+        message: err.message || "Error deleting Product with id=" + id,
       });
     });
 };
@@ -97,7 +97,7 @@ exports.updateProduct = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Product with id=" + id,
+        message: err.message || "Error updating Product with id=" + id,
       });
     });
 };

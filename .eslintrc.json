@@ -5,10 +5,42 @@
         "es2021": true,
         "node": true
     },
+    "overrides": [
+        {
+            "files": [
+                "**/*.test.js"
+            ],
+            "env": {
+                "browser": true
+            },
+            "rules": {
+                "semi": [
+                    "off"
+                ],
+                "quotes": [
+                    "off"
+                ],
+                "no-undef": [
+                    "off"
+                ]
+            }
+        }
+    ],
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "no-unused-vars": [
+            1
+        ]
     }
 }

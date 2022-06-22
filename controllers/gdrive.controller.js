@@ -14,7 +14,7 @@ const TOKEN_PATH = __dirname + "/../google-drive-token.json";
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
-exports.authorize = (req, res, next) => {
+exports.authorize = (req, res) => {
   fs.readFile(
     __dirname + "/../google-drive-credentials.json",
     "utf-8",
@@ -45,7 +45,7 @@ exports.authorize = (req, res, next) => {
   );
 };
 
-exports.authorizeCallback = (req, res, next) => {
+exports.authorizeCallback = (req, res) => {
   const code = req.query.code;
   //   res.send(req.query.code);
   //   return;
@@ -85,7 +85,7 @@ exports.authorizeCallback = (req, res, next) => {
  * Lists the names and IDs of up to 10 files.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-exports.listFiles = (req, res, next) => {
+exports.listFiles = (req, res) => {
   fs.readFile(
     __dirname + "/../google-drive-credentials.json",
     "utf-8",

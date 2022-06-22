@@ -12,7 +12,7 @@ passport.use(
       scope: ["profile", "email"],
     },
     async function (accessToken, refreshToken, profile, cb) {
-      const [user, status] = await User.findOrCreate({
+      const user = await User.findOrCreate({
         where: {
           googleId: profile.id,
           name: profile.displayName,
@@ -21,7 +21,7 @@ passport.use(
           source: "google",
         },
       });
-      cb(null, user);
+      cb(null, user[0]);
     }
   )
 );
