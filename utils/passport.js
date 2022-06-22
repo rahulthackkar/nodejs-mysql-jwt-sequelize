@@ -1,5 +1,6 @@
 const passport = require("passport");
-var GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const db = require("../models");
 const User = db.users;
 passport.use(
@@ -9,7 +10,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
       //   passReqToCallback: true,
-      scope: ["profile", "email"],
+      scope: ["profile", "email", "photos"],
     },
     async function (accessToken, refreshToken, profile, cb) {
       const user = await User.findOrCreate({
@@ -21,10 +22,20 @@ passport.use(
           source: "google",
         },
       });
-      cb(null, user[0]);
+      cb(null, profile);
     }
   )
 );
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: "/auth/facebook/callback",
+  }, function (accessToken, refreshToken, profile, cb) {
+    console.log(profile)
+    return cb(null, profile);
+  }
+));
+
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
     cb(null, user);

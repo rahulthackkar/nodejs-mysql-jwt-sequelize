@@ -1,12 +1,12 @@
 exports.publicAccess = (req, res) => {
-  res.send(200).json({ message: "This is a public content" });
+  res.json({ message: "This is a public content" });
 };
 exports.userAccess = (req, res) => {
-  res.send(200).json({ message: "This is a user content" });
+  res.json({ message: "This is a user content" });
 };
 exports.adminAccess = (req, res) => {
-  res.send(200).json({ message: "This is an admin content" });
+  res.json({ message: "This is an admin content" });
 };
 exports.moderatorAccess = (req, res) => {
-  res.send(200).json({ message: "This is a moderator content" });
+  res.json({ message: "This is a moderator content" });
 };

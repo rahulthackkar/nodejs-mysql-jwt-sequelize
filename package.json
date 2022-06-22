@@ -58,6 +58,7 @@
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.5",
     "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth2": "^0.2.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0",

@@ -1,33 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="NodeJS Google Login">
-    <title>NodeJS Google Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
-    <!-- Navigation: Start -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">NodeJS App</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <%- include('partials/menu'); %>
-      </div>
-    </nav>
-    <!-- Navigation: End -->
+    <meta name="description" content="Login NodeJS App">
+    <title>Login | NodeJS App</title>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/examples/headers/headers.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header: Start -->
+    <%- include('partials/header'); %>
+    <!-- Header: End -->
     <main role="main" class="container">
-      <div class="jumbotron">
         <h1>Login</h1>
         <p class="lead">
             <a href="/auth/google" class="btn btn-danger">
                 <i class="fab fa-google left"></i> Log In With Google
             </a>
+            <a href="/auth/facebook" class="btn btn-primary">
+                <i class="fab fa-facebook-f"></i> Log In With Facebook
+            </a>
         </p>
-      </div>
     </main>
- </body>
+    <!-- Footer: Start -->
+    <%- include('partials/footer'); %>
+    <!-- Footer: End -->
+</body>
 </html>

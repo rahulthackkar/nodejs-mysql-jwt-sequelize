@@ -9,7 +9,8 @@ module.exports = function (app) {
     );
     next();
   });
-  // API Authentication using JWT
+
+  // User signup
   app.post(
     "/api/auth/signup",
     [
@@ -18,9 +19,10 @@ module.exports = function (app) {
     ],
     authController.signup
   );
-  app.post("/api/auth/signin", authController.signin);
+
   // API Authentication using JWT
-  // Google Authentication
+  app.post("/api/auth/signin", authController.signin);
+
   app.get("/login", (req, res) => {
     if (req.user != null) {
       res.redirect("/");
@@ -29,6 +31,7 @@ module.exports = function (app) {
       user: req.user,
     });
   });
+  // Google Login
   app.get(
     "/auth/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
@@ -40,11 +43,24 @@ module.exports = function (app) {
       failureRedirect: "/login",
     })
   );
-  // Google Authentication
-
+  // Google Login
+  // Facebook Login
+  app.get(
+    "/auth/facebook",
+    passport.authenticate("facebook", {
+      scope: ["public_profile", "email"],
+    })
+  );
+  app.get(
+    "/auth/facebook/callback",
+    passport.authenticate("facebook", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+    })
+  );
   // Logout Handler
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 };
