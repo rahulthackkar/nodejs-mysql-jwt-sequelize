@@ -23,7 +23,7 @@ app.use(passport.session()); // persistent login sessions
 // ejs as view engine
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + "/assets"));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded

@@ -3,17 +3,21 @@ const { googleCloudUpload } = require("../utils/googleBucketService");
 
 // Upload file to google cloud bucket
 exports.fileUploadToGoogleBucket = async (req, res, next) => {
-  const result = googleCloudUpload(req.files[0]);
+  const result = googleCloudUpload(req.files);
   result
-    .then((fileUrl) => {
-      res.json({ fileURL: fileUrl });
+    .then((result) => {
+      res.json(result);
     })
     .catch((err) => {
-      res.status(500).json(err);
+      res.status(500).json({ message: err.message });
     });
 };
-// Upload file to google cloud bucket
+// Upload file to aws s3 bucket
 exports.fileUploadToS3Bucket = async (req, res, next) => {
-  const result = await s3Uploadv2(req.files[0]);
-  res.json(result);
+  try {
+    const result = await s3Uploadv2(req.files);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
