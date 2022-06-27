@@ -13,11 +13,11 @@
                 <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
             </ul>
 
-            <% if (user) { %>
+            <% if ( typeof(user) !== "undefined") { %>
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<%= user._json.picture %>" alt="Profile Picture" referrerpolicy="no-referrer" width="32" height="32" class="rounded-circle" />
+                    <img src="<%= user.picture %>" alt="Profile Picture" referrerpolicy="no-referrer" width="32" height="32" class="rounded-circle" />
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
