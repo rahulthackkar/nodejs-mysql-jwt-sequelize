@@ -29,7 +29,8 @@ passport.use(
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: "https://nodejs-upskill.herokuapp.com/auth/facebook/callback",
+    callbackURL: "/auth/facebook/callback",
+    proxy: true
   }, function (accessToken, refreshToken, profile, cb) {
     console.log(profile)
     return cb(null, profile);
