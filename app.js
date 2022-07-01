@@ -5,10 +5,9 @@ const fspath = require("path");
 const app = express();
 const dotenv = require("dotenv");
 const passport = require("passport");
-var csurf = require("csurf");
 dotenv.config({ path: fspath.resolve(__dirname, "./.env") });
 require("./utils/passport");
-var session = require("express-session");
+const session = require("express-session");
 // For Passport
 app.use(
   session({

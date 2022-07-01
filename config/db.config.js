@@ -16,6 +16,7 @@ module.exports = {
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.MYSQL_HOST,
+    logging: false,
     dialect: "mysql",
     dialectOptions: {
       bigNumberStrings: true,
@@ -24,6 +25,7 @@ module.exports = {
   production: {
     use_env_variable: "DATABASE_URL",
     dialect: "mysql",
+    logging: false,
     dialectOptions: {
       bigNumberStrings: true,
       //   ssl: {

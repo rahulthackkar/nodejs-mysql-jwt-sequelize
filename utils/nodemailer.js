@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const config = require("../config/auth.config");
-var ejs = require("ejs");
+const ejs = require("ejs");
 
 const transport = nodemailer.createTransport({
   host: config.smtp.SMTP_HOST,

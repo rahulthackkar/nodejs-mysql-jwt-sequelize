@@ -4,7 +4,7 @@ const uuid = require("uuid");
 exports.s3Uploadv2 = async (files) => {
   const s3 = new S3();
   const params = files.map((file) => {
-    var fileName = file.originalname;
+    let fileName = file.originalname;
     fileName = fileName.replace(/\s+/g, "-").toLowerCase();
     return {
       Bucket: process.env.AWS_BUCKET,

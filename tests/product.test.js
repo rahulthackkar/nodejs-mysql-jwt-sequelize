@@ -50,6 +50,6 @@ describe("Product API", () => {
         .del("/product/" + productId)
         .set("x-access-token", `${token}`)
         .set("Content-Type", `application/json`);
-      expect(res.statusCode).toEqual(204);
+      expect(res.statusCode).toEqual(200);
     });
 });
