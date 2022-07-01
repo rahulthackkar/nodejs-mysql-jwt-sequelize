@@ -2,7 +2,6 @@ const { S3 } = require("aws-sdk");
 const uuid = require("uuid");
 
 exports.s3Uploadv2 = async (files) => {
-  console.log(`${uuid.v4()}`);
   const s3 = new S3();
   const params = files.map((file) => {
     var fileName = file.originalname;
@@ -11,6 +10,7 @@ exports.s3Uploadv2 = async (files) => {
       Bucket: process.env.AWS_BUCKET,
       Key: `nodejs-upskillfest-rahul/${uuid.v4()}-${fileName}`,
       Body: file.buffer,
+      ContentType: file.mimetype,
       ACL: "public-read",
     };
   });
